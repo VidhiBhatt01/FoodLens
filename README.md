@@ -1,69 +1,29 @@
-# FoodLens
+# FoodLens 🍽️📍
 
-A campus-wide platform to reduce food waste by connecting surplus event food with students in real time. Designed with transparency, safety, and ethical AI principles inspired by UCLA CS 269.
+<!-- Banner -->
+<p align="center">
+  <img src="https://img.shields.io/badge/FoodLens-UCLA%20Free%20Food%20Finder-005587?style=for-the-badge&logo=leaflet&logoColor=white" alt="FoodLens Banner">
+</p>
 
+<p align="center">
+  <i>Reducing food waste. Empowering students. Built with ethical and interpretable AI.</i>
+</p>
 
-## Overview
+<!-- Badges -->
+<p align="center">
+  <img src="https://img.shields.io/badge/License-MIT-green.svg">
+  <img src="https://img.shields.io/badge/Streamlit-Deployable-FF4B4B.svg">
+  <img src="https://img.shields.io/badge/Python-3.10+-3776AB.svg">
+  <img src="https://img.shields.io/badge/Model-Interpretable%20ML-blue.svg">
+  <img src="https://img.shields.io/badge/Status-Active-success">
+</p>
 
-FoodLens allows event organizers to post free-food availability across campus. Students can browse active events, set notification preferences, and view event locations on an interactive map.
-
-
-The system includes an interpretable food-surplus predictor that estimates expected attendance to help organizers avoid over-ordering while maintaining transparency and fairness.
-
-
-
-## Features
-
-• Add a free-food event with details and optional image  
-
-• Browse active events with collapsible, clean UI  
-
-• View event location on map with Google Maps redirection  
-
-• Customizable email notifications for subscribed users  
-
-• Field-level validated email input  
-
-• Image support for event posts and email notifications  
-
-• Interpretable attendance predictor using custom decision-tree  
-
-• Always-visible testimonials for trust and credibility  
-
-• Feedback submission page  
-
-• Footer branding for project identity  
-
-
-
-## Tech Stack
-
-• Python  
-
-• Streamlit  
-
-• Folium  
-
-• scikit-learn  
-
-• Pandas  
-
-• Custom interpretable decision tree model  
-
-• Synthetic dataset generation
-
-
-
-## Screenshots
-
-Coming soon.
-
-
-
-<!--  
-
-Place screenshots using:
-
-![Screenshot](public/screenshot1.png)
-
--->
+## Table of Contents
+1. [Overview](#overview-)
+2. [Features](#features-)
+3. [Tech Stack](#tech-stack-)
+4. [Screenshots](#screenshots-)
+5. [Future Scope](#future-scope-)
+6. [Setup Guide](#setup-guide)
+7. [Project Structure](#project-structure)
+8. [License](#license)
