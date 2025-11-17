@@ -1,0 +1,401 @@
+id,building,zone,event_type,day,time,rsvps,expected_attendance,food_ordered,surplus
+1,Anderson,east,fair,wed,20:00,40,28,44,1
+2,Gonda,east,career_fair,fri,18:00,123,84,135,1
+3,Sproul Hall,west,seminar,fri,12:00,107,71,117,1
+4,Pauley Pavilion,west,club,thu,12:00,41,33,45,0
+5,Boelter Hall,north,club,wed,15:00,189,139,207,1
+6,Kaplan Hall,south,career_fair,thu,09:00,150,111,165,1
+7,Engineering VI,north,fair,fri,09:00,186,132,204,1
+8,Royce Hall,south,seminar,thu,18:00,130,80,143,1
+9,Sproul Hall,west,career_fair,fri,15:00,225,170,247,1
+10,Hedrick Hall,west,seminar,tue,18:00,73,40,80,1
+11,Engineering VI,north,seminar,tue,18:00,181,114,199,1
+12,Gonda,east,career_fair,thu,09:00,209,165,229,1
+13,Pauley Pavilion,west,career_fair,fri,12:00,130,100,143,1
+14,Pauley Pavilion,west,club,fri,20:00,84,58,92,1
+15,Engineering VI,north,club,mon,18:00,155,101,170,1
+16,Engineering VI,north,club,tue,12:00,60,49,66,1
+17,Sproul Hall,west,club,thu,12:00,52,34,57,1
+18,Pauley Pavilion,west,fair,thu,15:00,54,39,59,1
+19,Engineering VI,north,club,wed,09:00,24,24,26,0
+20,Gonda,east,club,tue,12:00,143,102,157,1
+21,Engineering VI,north,fair,mon,18:00,115,74,126,1
+22,Anderson,east,fair,wed,20:00,55,44,60,1
+23,Engineering VI,north,fair,wed,18:00,85,52,93,1
+24,Math Sciences,north,career_fair,thu,18:00,63,51,69,1
+25,Hedrick Hall,west,seminar,wed,12:00,111,89,122,1
+26,Boelter Hall,north,fair,mon,18:00,224,154,246,1
+27,Engineering VI,north,fair,wed,09:00,81,65,89,1
+28,Sproul Hall,west,fair,mon,18:00,132,90,145,1
+29,Royce Hall,south,seminar,thu,18:00,58,16,63,1
+30,Boelter Hall,north,fair,mon,12:00,149,118,163,1
+31,Hedrick Hall,west,fair,fri,09:00,148,113,162,1
+32,Hedrick Hall,west,career_fair,thu,15:00,203,159,223,1
+33,Anderson,east,fair,fri,18:00,117,86,128,1
+34,Pauley Pavilion,west,club,thu,15:00,89,79,97,1
+35,Pauley Pavilion,west,fair,thu,18:00,206,149,226,1
+36,Gonda,east,career_fair,thu,09:00,180,136,198,1
+37,Sproul Hall,west,seminar,mon,15:00,239,160,262,1
+38,UCLA Law,east,seminar,wed,18:00,163,111,179,1
+39,Royce Hall,south,career_fair,thu,09:00,21,21,23,0
+40,Anderson,east,club,wed,15:00,67,51,73,1
+41,Sproul Hall,west,career_fair,mon,18:00,94,72,103,1
+42,Hedrick Hall,west,club,wed,09:00,112,98,123,1
+43,Haines Hall,south,seminar,tue,15:00,227,147,249,1
+44,Sproul Hall,west,fair,mon,09:00,195,152,214,1
+45,Sproul Hall,west,fair,fri,15:00,201,159,221,1
+46,Math Sciences,north,club,thu,09:00,216,158,237,1
+47,Pauley Pavilion,west,career_fair,wed,18:00,54,40,59,1
+48,Royce Hall,south,seminar,wed,18:00,56,35,61,1
+49,Pauley Pavilion,west,club,fri,15:00,207,141,227,1
+50,Engineering VI,north,club,wed,12:00,44,39,48,0
+51,Kaplan Hall,south,seminar,tue,15:00,123,70,135,1
+52,Gonda,east,seminar,tue,12:00,36,36,39,0
+53,Pauley Pavilion,west,club,wed,20:00,189,126,207,1
+54,Boelter Hall,north,career_fair,tue,09:00,55,48,60,0
+55,Boelter Hall,north,career_fair,thu,15:00,234,187,257,1
+56,Sproul Hall,west,fair,wed,09:00,205,170,225,1
+57,UCLA Law,east,club,tue,12:00,105,76,115,1
+58,Boelter Hall,north,career_fair,fri,18:00,127,73,139,1
+59,Engineering VI,north,career_fair,fri,18:00,113,96,124,1
+60,Pauley Pavilion,west,seminar,thu,12:00,177,128,194,1
+61,Anderson,east,career_fair,wed,18:00,77,51,84,1
+62,Haines Hall,south,club,tue,09:00,136,101,149,1
+63,Boelter Hall,north,fair,fri,20:00,214,143,235,1
+64,Math Sciences,north,club,fri,18:00,88,42,96,1
+65,Anderson,east,seminar,thu,20:00,223,129,245,1
+66,Haines Hall,south,club,tue,12:00,88,65,96,1
+67,Hedrick Hall,west,career_fair,tue,12:00,166,142,182,1
+68,Boelter Hall,north,career_fair,tue,09:00,239,191,262,1
+69,Sproul Hall,west,career_fair,thu,12:00,182,140,200,1
+70,Gonda,east,club,thu,15:00,84,75,92,1
+71,Math Sciences,north,fair,thu,20:00,160,107,176,1
+72,Engineering VI,north,seminar,wed,09:00,109,71,119,1
+73,Pauley Pavilion,west,seminar,tue,12:00,181,126,199,1
+74,Royce Hall,south,seminar,fri,15:00,176,100,193,1
+75,Pauley Pavilion,west,club,fri,09:00,183,132,201,1
+76,Sproul Hall,west,club,wed,18:00,229,143,251,1
+77,Engineering VI,north,career_fair,fri,18:00,132,101,145,1
+78,Anderson,east,seminar,mon,09:00,81,63,89,1
+79,Pauley Pavilion,west,seminar,fri,15:00,38,29,41,0
+80,Sproul Hall,west,seminar,fri,20:00,118,69,129,1
+81,Pauley Pavilion,west,career_fair,wed,20:00,247,199,271,1
+82,Anderson,east,seminar,tue,18:00,164,101,180,1
+83,Math Sciences,north,fair,fri,12:00,156,129,171,1
+84,Boelter Hall,north,club,wed,20:00,84,61,92,1
+85,Royce Hall,south,fair,mon,20:00,151,108,166,1
+86,Anderson,east,career_fair,wed,12:00,109,85,119,1
+87,Gonda,east,seminar,wed,20:00,160,115,176,1
+88,Pauley Pavilion,west,fair,mon,09:00,150,104,165,1
+89,Math Sciences,north,club,thu,09:00,172,117,189,1
+90,Haines Hall,south,career_fair,fri,20:00,80,55,88,1
+91,Anderson,east,career_fair,fri,15:00,248,205,272,1
+92,Math Sciences,north,fair,mon,09:00,33,17,36,1
+93,Gonda,east,club,fri,15:00,163,117,179,1
+94,Haines Hall,south,career_fair,thu,20:00,27,19,29,0
+95,Haines Hall,south,career_fair,tue,18:00,197,121,216,1
+96,Sproul Hall,west,seminar,mon,09:00,180,115,198,1
+97,Boelter Hall,north,career_fair,fri,20:00,65,58,71,0
+98,Math Sciences,north,seminar,tue,15:00,128,75,140,1
+99,Engineering VI,north,career_fair,mon,09:00,165,118,181,1
+100,Kaplan Hall,south,fair,mon,20:00,180,127,198,1
+101,Royce Hall,south,fair,mon,20:00,74,50,81,1
+102,Anderson,east,seminar,wed,20:00,42,29,46,1
+103,Boelter Hall,north,club,tue,12:00,102,68,112,1
+104,Royce Hall,south,fair,fri,20:00,23,10,25,0
+105,Royce Hall,south,club,tue,18:00,114,65,125,1
+106,Haines Hall,south,seminar,wed,15:00,69,42,75,1
+107,Pauley Pavilion,west,seminar,thu,20:00,241,142,265,1
+108,Sproul Hall,west,fair,fri,20:00,161,120,177,1
+109,Kaplan Hall,south,fair,thu,12:00,57,55,62,0
+110,Gonda,east,fair,tue,18:00,185,139,203,1
+111,Engineering VI,north,career_fair,tue,15:00,100,79,110,1
+112,Pauley Pavilion,west,seminar,fri,12:00,224,163,246,1
+113,Kaplan Hall,south,fair,wed,15:00,130,95,143,1
+114,Pauley Pavilion,west,fair,wed,15:00,112,99,123,1
+115,Hedrick Hall,west,club,tue,15:00,166,112,182,1
+116,Royce Hall,south,seminar,fri,09:00,152,107,167,1
+117,Math Sciences,north,seminar,tue,09:00,97,58,106,1
+118,Royce Hall,south,fair,mon,15:00,82,52,90,1
+119,Pauley Pavilion,west,club,tue,18:00,20,13,22,0
+120,Sproul Hall,west,fair,tue,18:00,234,157,257,1
+121,Haines Hall,south,club,tue,15:00,75,51,82,1
+122,UCLA Law,east,fair,thu,20:00,37,19,40,1
+123,Haines Hall,south,fair,wed,09:00,138,108,151,1
+124,Boelter Hall,north,fair,tue,18:00,44,30,48,1
+125,Boelter Hall,north,career_fair,mon,18:00,157,109,172,1
+126,Gonda,east,seminar,tue,09:00,102,83,112,1
+127,Royce Hall,south,club,thu,12:00,83,38,91,1
+128,Math Sciences,north,club,mon,09:00,200,147,220,1
+129,Royce Hall,south,seminar,thu,15:00,209,129,229,1
+130,Anderson,east,fair,wed,15:00,50,38,55,1
+131,Pauley Pavilion,west,career_fair,tue,18:00,239,167,262,1
+132,Kaplan Hall,south,seminar,mon,12:00,98,67,107,1
+133,UCLA Law,east,fair,fri,18:00,152,101,167,1
+134,Anderson,east,career_fair,mon,18:00,66,38,72,1
+135,Math Sciences,north,seminar,fri,15:00,119,90,130,1
+136,Haines Hall,south,career_fair,tue,20:00,170,97,187,1
+137,Haines Hall,south,club,tue,18:00,84,45,92,1
+138,Kaplan Hall,south,fair,mon,20:00,81,44,89,1
+139,Hedrick Hall,west,seminar,fri,15:00,156,105,171,1
+140,Math Sciences,north,career_fair,fri,15:00,124,89,136,1
+141,Math Sciences,north,career_fair,wed,20:00,184,142,202,1
+142,Haines Hall,south,career_fair,mon,20:00,61,47,67,1
+143,Math Sciences,north,career_fair,wed,20:00,185,120,203,1
+144,Boelter Hall,north,club,mon,12:00,225,169,247,1
+145,Engineering VI,north,fair,wed,15:00,154,138,169,1
+146,Sproul Hall,west,fair,fri,09:00,241,201,265,1
+147,Gonda,east,career_fair,fri,09:00,116,100,127,1
+148,Math Sciences,north,career_fair,tue,12:00,24,24,26,0
+149,UCLA Law,east,club,fri,18:00,128,74,140,1
+150,Boelter Hall,north,club,thu,18:00,192,107,211,1
+151,Kaplan Hall,south,fair,wed,15:00,183,133,201,1
+152,Engineering VI,north,seminar,tue,12:00,65,47,71,1
+153,UCLA Law,east,club,tue,09:00,244,171,268,1
+154,Pauley Pavilion,west,career_fair,fri,12:00,111,94,122,1
+155,UCLA Law,east,club,wed,20:00,225,138,247,1
+156,Math Sciences,north,seminar,thu,09:00,20,12,22,0
+157,UCLA Law,east,fair,wed,20:00,194,144,213,1
+158,Pauley Pavilion,west,club,tue,09:00,54,34,59,1
+159,Anderson,east,seminar,wed,12:00,154,125,169,1
+160,Engineering VI,north,fair,thu,15:00,198,151,217,1
+161,Royce Hall,south,fair,thu,20:00,107,77,117,1
+162,UCLA Law,east,seminar,thu,12:00,232,156,255,1
+163,Engineering VI,north,club,thu,09:00,196,146,215,1
+164,Anderson,east,career_fair,mon,09:00,243,195,267,1
+165,Math Sciences,north,fair,wed,15:00,203,171,223,1
+166,Boelter Hall,north,club,fri,15:00,37,27,40,0
+167,Math Sciences,north,fair,tue,12:00,239,186,262,1
+168,Gonda,east,career_fair,mon,20:00,74,23,81,1
+169,Gonda,east,career_fair,tue,12:00,230,175,253,1
+170,Gonda,east,career_fair,tue,20:00,27,27,29,0
+171,Boelter Hall,north,fair,wed,15:00,91,78,100,1
+172,Gonda,east,club,thu,12:00,54,36,59,1
+173,Hedrick Hall,west,career_fair,wed,18:00,184,135,202,1
+174,UCLA Law,east,fair,tue,09:00,170,127,187,1
+175,Engineering VI,north,career_fair,fri,15:00,55,54,60,0
+176,Engineering VI,north,club,thu,15:00,149,111,163,1
+177,Gonda,east,fair,thu,18:00,24,24,26,0
+178,Math Sciences,north,club,thu,15:00,105,68,115,1
+179,Pauley Pavilion,west,seminar,wed,09:00,133,116,146,1
+180,Anderson,east,seminar,wed,18:00,173,117,190,1
+181,Royce Hall,south,club,tue,20:00,94,52,103,1
+182,Royce Hall,south,seminar,tue,09:00,184,130,202,1
+183,Math Sciences,north,seminar,thu,20:00,125,71,137,1
+184,UCLA Law,east,fair,tue,18:00,72,45,79,1
+185,UCLA Law,east,club,mon,12:00,232,165,255,1
+186,Hedrick Hall,west,career_fair,wed,09:00,70,40,77,1
+187,Engineering VI,north,seminar,fri,20:00,30,10,33,1
+188,Engineering VI,north,fair,wed,12:00,74,52,81,1
+189,UCLA Law,east,seminar,fri,09:00,55,28,60,1
+190,Sproul Hall,west,club,wed,20:00,245,160,269,1
+191,Math Sciences,north,seminar,fri,09:00,220,145,242,1
+192,Engineering VI,north,career_fair,tue,09:00,58,32,63,1
+193,Gonda,east,seminar,fri,18:00,191,112,210,1
+194,Gonda,east,club,fri,09:00,93,59,102,1
+195,Engineering VI,north,club,thu,15:00,27,27,29,0
+196,Math Sciences,north,career_fair,mon,12:00,108,91,118,1
+197,Sproul Hall,west,fair,tue,09:00,128,99,140,1
+198,Sproul Hall,west,club,tue,20:00,105,63,115,1
+199,Kaplan Hall,south,seminar,fri,09:00,134,86,147,1
+200,Kaplan Hall,south,fair,tue,15:00,122,96,134,1
+201,Math Sciences,north,fair,wed,18:00,207,163,227,1
+202,UCLA Law,east,fair,thu,09:00,23,17,25,0
+203,Math Sciences,north,club,fri,12:00,180,128,198,1
+204,Haines Hall,south,fair,wed,12:00,53,49,58,0
+205,Kaplan Hall,south,fair,fri,20:00,37,19,40,1
+206,Boelter Hall,north,career_fair,thu,09:00,29,29,31,0
+207,Royce Hall,south,fair,thu,20:00,84,51,92,1
+208,Haines Hall,south,seminar,thu,12:00,209,133,229,1
+209,Boelter Hall,north,career_fair,mon,20:00,226,142,248,1
+210,Sproul Hall,west,seminar,fri,20:00,248,139,272,1
+211,UCLA Law,east,fair,wed,20:00,245,193,269,1
+212,Math Sciences,north,seminar,wed,12:00,76,69,83,0
+213,Royce Hall,south,club,tue,15:00,139,86,152,1
+214,Gonda,east,club,mon,15:00,39,25,42,1
+215,Royce Hall,south,club,wed,12:00,182,133,200,1
+216,Sproul Hall,west,career_fair,wed,20:00,139,112,152,1
+217,Engineering VI,north,club,mon,18:00,161,95,177,1
+218,Sproul Hall,west,fair,thu,20:00,156,118,171,1
+219,Anderson,east,seminar,thu,12:00,28,23,30,0
+220,Gonda,east,seminar,thu,15:00,152,104,167,1
+221,Hedrick Hall,west,seminar,fri,18:00,195,112,214,1
+222,Math Sciences,north,career_fair,fri,20:00,134,95,147,1
+223,Kaplan Hall,south,career_fair,tue,15:00,224,172,246,1
+224,Anderson,east,fair,wed,09:00,32,24,35,0
+225,Anderson,east,club,fri,12:00,119,94,130,1
+226,Anderson,east,fair,fri,12:00,50,45,55,0
+227,UCLA Law,east,seminar,wed,20:00,177,127,194,1
+228,Sproul Hall,west,seminar,fri,15:00,132,95,145,1
+229,Boelter Hall,north,career_fair,tue,18:00,211,159,232,1
+230,Kaplan Hall,south,seminar,tue,09:00,243,159,267,1
+231,Kaplan Hall,south,career_fair,thu,20:00,240,151,264,1
+232,Hedrick Hall,west,career_fair,wed,09:00,31,30,34,0
+233,Royce Hall,south,seminar,mon,12:00,139,85,152,1
+234,Engineering VI,north,club,wed,09:00,153,117,168,1
+235,Gonda,east,career_fair,wed,15:00,77,70,84,0
+236,Anderson,east,club,fri,20:00,94,56,103,1
+237,Hedrick Hall,west,fair,thu,15:00,46,22,50,1
+238,Haines Hall,south,fair,tue,20:00,182,113,200,1
+239,Pauley Pavilion,west,club,thu,12:00,34,34,37,0
+240,Hedrick Hall,west,club,mon,20:00,72,29,79,1
+241,Sproul Hall,west,fair,tue,18:00,218,145,239,1
+242,Math Sciences,north,fair,thu,09:00,241,195,265,1
+243,Kaplan Hall,south,club,thu,18:00,247,123,271,1
+244,Sproul Hall,west,seminar,fri,20:00,149,91,163,1
+245,Sproul Hall,west,career_fair,fri,09:00,91,88,100,0
+246,Haines Hall,south,fair,wed,20:00,236,162,259,1
+247,Math Sciences,north,club,wed,15:00,107,77,117,1
+248,Haines Hall,south,career_fair,thu,09:00,221,166,243,1
+249,Hedrick Hall,west,career_fair,mon,12:00,244,193,268,1
+250,Boelter Hall,north,career_fair,tue,12:00,185,142,203,1
+251,UCLA Law,east,seminar,tue,12:00,162,109,178,1
+252,Engineering VI,north,club,wed,15:00,153,111,168,1
+253,Math Sciences,north,club,mon,12:00,223,159,245,1
+254,Haines Hall,south,fair,wed,15:00,103,87,113,1
+255,Hedrick Hall,west,seminar,tue,15:00,146,116,160,1
+256,UCLA Law,east,seminar,thu,18:00,160,97,176,1
+257,Boelter Hall,north,fair,tue,15:00,74,72,81,0
+258,Engineering VI,north,club,wed,18:00,101,64,111,1
+259,Haines Hall,south,fair,fri,09:00,78,49,85,1
+260,Anderson,east,club,mon,18:00,68,45,74,1
+261,Royce Hall,south,fair,tue,20:00,43,13,47,1
+262,Hedrick Hall,west,career_fair,thu,12:00,196,149,215,1
+263,Anderson,east,career_fair,tue,20:00,117,90,128,1
+264,Haines Hall,south,fair,tue,15:00,134,100,147,1
+265,Haines Hall,south,club,thu,15:00,37,35,40,0
+266,UCLA Law,east,career_fair,thu,12:00,191,159,210,1
+267,Haines Hall,south,seminar,fri,20:00,185,88,203,1
+268,Pauley Pavilion,west,fair,mon,18:00,149,103,163,1
+269,UCLA Law,east,club,wed,09:00,47,41,51,0
+270,Anderson,east,career_fair,thu,18:00,64,34,70,1
+271,Gonda,east,fair,wed,12:00,214,166,235,1
+272,Math Sciences,north,career_fair,mon,09:00,152,116,167,1
+273,Sproul Hall,west,career_fair,mon,09:00,83,56,91,1
+274,Anderson,east,fair,fri,18:00,184,116,202,1
+275,Boelter Hall,north,career_fair,thu,18:00,130,88,143,1
+276,Math Sciences,north,seminar,tue,09:00,56,42,61,1
+277,Hedrick Hall,west,club,mon,15:00,217,153,238,1
+278,Hedrick Hall,west,career_fair,fri,12:00,235,180,258,1
+279,Gonda,east,seminar,tue,09:00,69,48,75,1
+280,Sproul Hall,west,fair,tue,18:00,57,43,62,1
+281,Sproul Hall,west,career_fair,fri,18:00,99,69,108,1
+282,Hedrick Hall,west,club,mon,20:00,115,69,126,1
+283,Royce Hall,south,fair,tue,09:00,74,55,81,1
+284,Haines Hall,south,seminar,mon,12:00,155,102,170,1
+285,Anderson,east,career_fair,wed,09:00,65,56,71,0
+286,UCLA Law,east,club,fri,09:00,109,82,119,1
+287,Haines Hall,south,seminar,mon,09:00,188,120,206,1
+288,UCLA Law,east,club,thu,15:00,217,147,238,1
+289,Haines Hall,south,club,mon,15:00,128,81,140,1
+290,Kaplan Hall,south,club,fri,09:00,95,62,104,1
+291,Kaplan Hall,south,fair,fri,15:00,79,76,86,0
+292,Pauley Pavilion,west,fair,thu,12:00,30,30,33,0
+293,UCLA Law,east,seminar,tue,12:00,193,160,212,1
+294,Hedrick Hall,west,seminar,thu,20:00,240,144,264,1
+295,Royce Hall,south,career_fair,fri,12:00,67,58,73,0
+296,Gonda,east,career_fair,tue,18:00,142,118,156,1
+297,Anderson,east,club,wed,20:00,143,93,157,1
+298,Gonda,east,career_fair,fri,20:00,233,166,256,1
+299,UCLA Law,east,seminar,fri,18:00,136,73,149,1
+300,Gonda,east,career_fair,tue,18:00,177,115,194,1
+301,Haines Hall,south,club,fri,18:00,109,58,119,1
+302,UCLA Law,east,fair,fri,09:00,189,149,207,1
+303,Math Sciences,north,career_fair,thu,18:00,215,154,236,1
+304,Gonda,east,club,fri,18:00,156,75,171,1
+305,Royce Hall,south,fair,tue,12:00,140,95,154,1
+306,Math Sciences,north,career_fair,wed,18:00,79,53,86,1
+307,UCLA Law,east,club,tue,15:00,183,126,201,1
+308,Engineering VI,north,club,wed,18:00,245,150,269,1
+309,Engineering VI,north,club,mon,20:00,162,91,178,1
+310,UCLA Law,east,club,fri,20:00,204,117,224,1
+311,Royce Hall,south,seminar,wed,20:00,165,87,181,1
+312,Anderson,east,club,wed,18:00,65,26,71,1
+313,UCLA Law,east,seminar,tue,20:00,55,28,60,1
+314,UCLA Law,east,club,thu,20:00,68,32,74,1
+315,Hedrick Hall,west,career_fair,fri,18:00,46,21,50,1
+316,Hedrick Hall,west,fair,thu,20:00,77,60,84,1
+317,UCLA Law,east,seminar,tue,18:00,21,10,23,0
+318,Haines Hall,south,career_fair,fri,20:00,240,150,264,1
+319,Gonda,east,club,tue,09:00,74,45,81,1
+320,Sproul Hall,west,career_fair,fri,18:00,134,103,147,1
+321,Hedrick Hall,west,club,thu,18:00,84,51,92,1
+322,Haines Hall,south,seminar,mon,20:00,35,29,38,0
+323,Hedrick Hall,west,career_fair,tue,20:00,161,110,177,1
+324,Math Sciences,north,club,fri,12:00,238,163,261,1
+325,Boelter Hall,north,club,wed,15:00,199,150,218,1
+326,Kaplan Hall,south,seminar,wed,15:00,162,112,178,1
+327,Royce Hall,south,career_fair,tue,18:00,68,44,74,1
+328,UCLA Law,east,career_fair,tue,15:00,99,78,108,1
+329,UCLA Law,east,club,fri,15:00,85,56,93,1
+330,Haines Hall,south,career_fair,tue,09:00,213,155,234,1
+331,Boelter Hall,north,seminar,mon,18:00,114,88,125,1
+332,Haines Hall,south,club,thu,15:00,246,157,270,1
+333,Math Sciences,north,club,fri,20:00,245,151,269,1
+334,Pauley Pavilion,west,fair,thu,12:00,240,192,264,1
+335,Sproul Hall,west,seminar,fri,15:00,149,96,163,1
+336,Anderson,east,fair,tue,12:00,108,89,118,1
+337,Haines Hall,south,fair,tue,20:00,178,111,195,1
+338,Math Sciences,north,seminar,wed,18:00,116,72,127,1
+339,Sproul Hall,west,career_fair,mon,20:00,122,80,134,1
+340,Hedrick Hall,west,fair,tue,20:00,135,90,148,1
+341,UCLA Law,east,career_fair,fri,15:00,26,10,28,1
+342,Anderson,east,club,fri,12:00,81,78,89,0
+343,Anderson,east,seminar,fri,12:00,234,164,257,1
+344,Boelter Hall,north,club,tue,12:00,232,153,255,1
+345,Math Sciences,north,club,fri,18:00,228,137,250,1
+346,Anderson,east,career_fair,fri,12:00,215,164,236,1
+347,Haines Hall,south,career_fair,wed,09:00,240,185,264,1
+348,Math Sciences,north,club,mon,09:00,211,129,232,1
+349,Boelter Hall,north,club,mon,12:00,79,53,86,1
+350,Haines Hall,south,career_fair,thu,20:00,47,27,51,1
+351,Gonda,east,seminar,wed,09:00,98,72,107,1
+352,Engineering VI,north,club,thu,09:00,106,82,116,1
+353,Boelter Hall,north,career_fair,mon,15:00,148,111,162,1
+354,Kaplan Hall,south,career_fair,wed,15:00,47,47,51,0
+355,Gonda,east,seminar,fri,20:00,113,61,124,1
+356,Pauley Pavilion,west,fair,mon,09:00,213,169,234,1
+357,UCLA Law,east,fair,mon,18:00,145,99,159,1
+358,Math Sciences,north,fair,tue,12:00,168,133,184,1
+359,Sproul Hall,west,career_fair,tue,20:00,200,140,220,1
+360,Hedrick Hall,west,fair,tue,09:00,187,156,205,1
+361,Kaplan Hall,south,club,mon,15:00,97,79,106,1
+362,Haines Hall,south,career_fair,fri,18:00,51,24,56,1
+363,UCLA Law,east,club,fri,15:00,141,101,155,1
+364,Boelter Hall,north,fair,tue,20:00,160,114,176,1
+365,Royce Hall,south,seminar,thu,15:00,105,61,115,1
+366,Pauley Pavilion,west,club,tue,12:00,48,40,52,0
+367,Engineering VI,north,career_fair,wed,12:00,114,87,125,1
+368,Pauley Pavilion,west,seminar,wed,20:00,208,134,228,1
+369,Engineering VI,north,fair,wed,20:00,49,39,53,0
+370,Pauley Pavilion,west,fair,tue,12:00,163,137,179,1
+371,Pauley Pavilion,west,career_fair,fri,15:00,212,162,233,1
+372,Hedrick Hall,west,seminar,wed,09:00,29,16,31,0
+373,Math Sciences,north,fair,wed,15:00,85,81,93,0
+374,Hedrick Hall,west,seminar,tue,12:00,73,46,80,1
+375,Pauley Pavilion,west,seminar,mon,12:00,200,128,220,1
+376,Gonda,east,fair,wed,20:00,205,144,225,1
+377,Sproul Hall,west,club,thu,18:00,157,95,172,1
+378,Math Sciences,north,club,fri,12:00,57,47,62,0
+379,Royce Hall,south,club,thu,09:00,138,89,151,1
+380,Anderson,east,career_fair,tue,18:00,151,114,166,1
+381,Hedrick Hall,west,career_fair,tue,12:00,166,139,182,1
+382,Engineering VI,north,seminar,wed,20:00,95,57,104,1
+383,Haines Hall,south,seminar,fri,18:00,211,97,232,1
+384,Kaplan Hall,south,club,mon,12:00,82,56,90,1
+385,Pauley Pavilion,west,fair,thu,15:00,66,44,72,1
+386,Sproul Hall,west,fair,thu,15:00,122,112,134,1
+387,Math Sciences,north,career_fair,fri,09:00,80,69,88,1
+388,Royce Hall,south,seminar,mon,15:00,128,96,140,1
+389,Anderson,east,fair,tue,15:00,65,47,71,1
+390,Pauley Pavilion,west,career_fair,mon,20:00,93,54,102,1
+391,Pauley Pavilion,west,career_fair,tue,18:00,145,101,159,1
+392,Boelter Hall,north,career_fair,mon,18:00,127,103,139,1
+393,Pauley Pavilion,west,fair,thu,09:00,55,36,60,1
+394,Haines Hall,south,career_fair,tue,09:00,224,160,246,1
+395,Royce Hall,south,club,thu,15:00,103,75,113,1
+396,Math Sciences,north,club,wed,12:00,179,150,196,1
+397,Sproul Hall,west,career_fair,fri,12:00,173,125,190,1
+398,Boelter Hall,north,seminar,fri,12:00,88,57,96,1
+399,Gonda,east,seminar,fri,09:00,166,118,182,1
+400,Pauley Pavilion,west,club,mon,09:00,197,136,216,1

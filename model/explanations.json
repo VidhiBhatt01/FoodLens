@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "prediction": 1,
+    "explanation": [
+      {
+        "feature": "attendance",
+        "value": 48,
+        "contribution": "increasing probability"
+      },
+      {
+        "feature": "Event type",
+        "value": "fair",
+        "contribution": "moderate effect"
+      },
+      {
+        "feature": "Time of day",
+        "value": "morning",
+        "contribution": "minor effect"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "prediction": 0,
+    "explanation": [
+      {
+        "feature": "attendance",
+        "value": 118,
+        "contribution": "decreasing probability"
+      },
+      {
+        "feature": "Event type",
+        "value": "career_fair",
+        "contribution": "moderate effect"
+      },
+      {
+        "feature": "Time of day",
+        "value": "morning",
+        "contribution": "minor effect"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "prediction": 0,
+    "explanation": [
+      {
+        "feature": "attendance",
+        "value": 190,
+        "contribution": "decreasing probability"
+      },
+      {
+        "feature": "Event type",
+        "value": "club",
+        "contribution": "moderate effect"
+      },
+      {
+        "feature": "Time of day",
+        "value": "evening",
+        "contribution": "minor effect"
+      }
+    ]
+  }
+]
