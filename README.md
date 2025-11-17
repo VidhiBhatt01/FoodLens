@@ -1,6 +1,4 @@
-<p align="center">
-  <h1>FoodLens 🍕🔍</h1>
-</p>
+<h1 align="center">FoodLens 🍕🔍</h1>
 <!-- Banner -->
 <p align="center">
   <img src="https://img.shields.io/badge/FoodLens-UCLA%20Free%20Food%20Finder-005587?style=for-the-badge&logo=leaflet&logoColor=white" alt="FoodLens Banner">
@@ -107,3 +105,4 @@ Optional attendee check-ins to measure accuracy between predicted vs. actual att
 <p align="center" style="color:gray; font-size:0.9rem;">
   Made with ❤️ by <b>Vidhi</b> (MS CS @ UCLA – Fall 2025)
 </p>
+
