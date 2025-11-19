@@ -78,4 +78,3 @@ The project remains **fully achievable within a 10-week quarter**, while still p
 FoodLens shows how **interpretable and ethically grounded AI** can address a tangible real-world challenge.  
 
 ---
-

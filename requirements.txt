@@ -6,3 +6,5 @@ folium
 streamlit-folium
 pdf2image
 matplotlib
+supabase
+python-dotenv

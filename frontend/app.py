@@ -7,6 +7,9 @@ import folium
 from streamlit_folium import st_folium
 import json
 from model.predictor import recommend
+from backend.events import add_event, fetch_events
+from backend.supabase_client import get_client
+from backend.subscribers import add_subscriber
 
 st.set_page_config(page_title="FoodLens", layout="wide")
 
@@ -61,27 +64,31 @@ with tab_add:
     if submitted:
         img_path = None
         if uploaded_image:
-            # Saving uploaded image to local directory
-            os.makedirs("event_images", exist_ok=True)
-            img_path = f"event_images/{uploaded_image.name}"
-            with open(img_path, "wb") as f:
-                f.write(uploaded_image.getbuffer())
+            import uuid
+            ext = uploaded_image.name.split(".")[-1]
+            file_name = f"{uuid.uuid4()}.{ext}"
 
-        # Creating new event dictionary
+            # Upload to Supabase Storage
+            sb = get_client()
+            sb.storage.from_("event-images").upload(
+                file_name, uploaded_image.getvalue(), file_options={"content-type": uploaded_image.type}
+            )
+            img_path = sb.storage.from_("event-images").get_public_url(file_name)
+
         new_event = {
-            "id": len(st.session_state["events"]) + 1,
             "building": building,
             "zone": zone,
             "event_type": event_type,
             "diet": diet,
             "food_desc": food_desc,
             "collect_mode": collect_mode,
-            "collect_until_time": collect_until_time.strftime("%H:%M") if collect_mode == "Until specific time" else "",
-            "is_active": True,
-            "image_path": img_path
+            "collect_until_time": collect_until_time.strftime("%H:%M") if collect_mode=="Until specific time" else "",
+            "image_url": img_path,
+            "is_active": True
         }
-        st.session_state["events"].append(new_event)
-        st.success(f"Event #{new_event['id']} added!")
+
+        add_event(new_event)
+        st.success("Event added (persistent)!")
 
     # Adding event closure functionality
     st.subheader("Close an Event")
@@ -145,8 +152,8 @@ with tab_browse:
             if not email_valid:
                 st.error("Please enter a valid email address before subscribing.")
             else:
-                notif_prefs["subscribed"] = True
-                st.success(f"Subscribed! You will receive simulated notifications at **{email}**.")
+                add_subscriber(username, email, pref_zone, pref_diet)
+                st.success(f"Subscribed! Notifications will be sent to {email}.")
     else:
         st.info("You can still browse all events without logging in.")
 
@@ -154,7 +161,10 @@ with tab_browse:
     st.markdown("**Browse filters:**")
     f_zone = st.multiselect("Filter by zone", ["north","south","east","west"], default=["north","south","east","west"])
     f_diet = st.multiselect("Filter by diet", ["vegan","vegetarian","non-vegetarian","mixed"], default=["vegan","vegetarian","non-vegetarian","mixed"])
-    active_events = [e for e in st.session_state["events"] if e["is_active"] and e["zone"] in f_zone and e["diet"] in f_diet]
+    events = fetch_events()
+    active_events = [e for e in events if e["is_active"]
+                     and e["zone"] in f_zone 
+                     and e["diet"] in f_diet]
 
     # Creating interactive map with markers
     focus = st.session_state.get("focus_event")
@@ -292,14 +302,13 @@ with tab_feedback:
     msg = st.text_area("Message")
 
     if st.button("Submit feedback"):
-        # Saving feedback to CSV file
-        df_new = pd.DataFrame([{"name": name, "email": email, "message": msg}])
-        if os.path.exists("feedback.csv"):
-            df_old = pd.read_csv("feedback.csv")
-            df_all = pd.concat([df_old, df_new], ignore_index=True)
-        else:
-            df_all = df_new
-        df_all.to_csv("feedback.csv", index=False)
+        sb = get_client()
+        sb.table("feedback").insert({
+            "name": name,
+            "email": email,
+            "message": msg
+        }).execute()
+
         st.success("Thank you! Your feedback has been recorded.")
 
 # Displaying footer
