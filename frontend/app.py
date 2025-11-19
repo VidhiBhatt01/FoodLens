@@ -201,20 +201,26 @@ with tab_browse:
         st.write("No events match your filters right now.")
     else:
         for e in active_events:
-            with st.expander(f"#{e['id']} – {e['building']}", expanded=False):
-                if e.get("image_path") and os.path.exists(e["image_path"]):
-                    st.image(e["image_path"], width=250, caption="Event image")
-                st.markdown(f"**Zone:** {e['zone'].capitalize()}")
-                st.markdown(f"**Diet:** {e['diet']}")
-                st.markdown(f"**Food:** {e['food_desc']}")
-                st.markdown(f"**Type:** {e['event_type']}")
-                collect_str = e["collect_mode"]
-                if e["collect_mode"] == "Until specific time" and e["collect_until_time"]:
-                    collect_str = f"{e['collect_mode']} ({e['collect_until_time']})"
-                st.markdown(f"**Collect:** {collect_str}")
-                if st.button(f"Show on map (Event #{e['id']})", key=f"show_map_{e['id']}"):
-                    st.session_state["focus_event"] = e
-                    st.success(f"Highlighting event #{e['id']} on map...")
+            html = f"""
+    <div class='event-card'>
+        <div class='event-title'>#{e['id']} – {e['building']}</div>
+
+        <span class='tag tag-zone'>{e['zone'].capitalize()}</span>
+        <span class='tag tag-diet'>{e['diet']}</span>
+
+        <div class='event-row'><span class='event-label'>Food:</span> {e['food_desc']}</div>
+        <div class='event-row'><span class='event-label'>Type:</span> {e['event_type']}</div>
+        <div class='event-row'><span class='event-label'>Collect:</span> {e['collect_mode']} {e['collect_until_time'] or ""}</div>
+    </div>
+"""
+            st.markdown(html, unsafe_allow_html=True)
+
+            if e.get("image_url"):
+                st.image(e["image_url"], width=250, caption=f"Event #{e['id']} image")
+            
+            if st.button(f"Show on map (Event #{e['id']})", key=f"show_map_{e['id']}"):
+                st.session_state["focus_event"] = e
+                st.success(f"Highlighting event #{e['id']} on map...")
 
     # Simulating email notifications for subscribed users
     if logged_in and active_events:
