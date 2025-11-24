@@ -336,113 +336,99 @@ with tab_browse:
 
         for e in active_events:
 
-            with st.expander(f"#{e['id']} — {e['building']}", expanded=False):
+            with st.expander(f"#{e['id']} — {e['building']}"):
 
 
 
-                # Inject card CSS
-
-                st.markdown("""
+                st.markdown(f"""
 
                 <style>
 
-                .event-card {
+                    .event-card {{
 
-                    background-color: #1e1e1e;
+                        background-color: #1e1e1e;
 
-                    padding: 18px;
+                        padding: 18px;
 
-                    margin-bottom: 16px;
+                        border-radius: 12px;
 
-                    border-radius: 10px;
+                        border: 1px solid #333;
 
-                    border: 1px solid #333;
+                        color: white;
 
-                    color: #f2f2f2;
+                    }}
 
-                    font-family: sans-serif;
+                    .badge-row {{
 
-                }
+                        display: flex;
 
-                .badge-row {
+                        gap: 8px;
 
-                    display: flex;
+                        margin-bottom: 10px;
 
-                    gap: 10px;
+                    }}
 
-                    margin-bottom: 12px;
+                    .badge {{
 
-                }
+                        padding: 6px 10px;
 
-                .badge {
+                        border-radius: 6px;
 
-                    padding: 5px 10px;
+                        font-size: 0.75rem;
 
-                    border-radius: 6px;
+                        color: white;
 
-                    color: white;
+                    }}
 
-                    font-size: 0.8rem;
+                    .badge-zone {{ background-color: #4285F4; }}
 
-                    font-weight: 600;
-
-                }
-
-                .badge-zone { background:#4285F4; }
-
-                .badge-diet { background:#00C853; }
-
-                .event-label { font-weight:600; color:#bbdefb; }
+                    .badge-diet {{ background-color: #00C853; }}
 
                 </style>
+
+
+
+                <div class='event-card'>
+
+
+
+                    <h3>#{e['id']} — {e['building']}</h3>
+
+
+
+                    <div class='badge-row'>
+
+                        <div class='badge badge-zone'>{e['zone'].capitalize()}</div>
+
+                        <div class='badge badge-diet'>{e['diet']}</div>
+
+                    </div>
+
+
+
+                    <p><b>Food:</b> {e['food_desc']}</p>
+
+                    <p><b>Type:</b> {e['event_type']}</p>
+
+                    <p><b>Collect:</b> {e['collect_mode']} {e['collect_until_time'] or ''}</p>
+
+
+
+                </div>
 
                 """, unsafe_allow_html=True)
 
 
 
-                # Render card
-
-                card_html = f"""
-
-<div class='event-card'>
-
-    <div class='event-title'>#{e['id']} – {e['building']}</div>
-
-
-
-    <div class='badge-row'>
-
-        <div class='badge badge-zone'>{e['zone'].capitalize()}</div>
-
-        <div class='badge badge-diet'>{e['diet']}</div>
-
-    </div>
-
-
-
-    <p><span class='event-label'>Food:</span> {e['food_desc']}</p>
-
-    <p><span class='event-label'>Type:</span> {e['event_type']}</p>
-
-    <p><span class='event-label'>Collect:</span> {e['collect_mode']} {e['collect_until_time'] or ""}</p>
-
-</div>
-
-"""
-
-
-
-                components.html(card_html, height=250, scrolling=False)
-
-
+                # Show image preview (FIXED: use image_url)
 
                 if e.get("image_url"):
 
-                    st.image(e["image_url"], width=250, caption=f"Event #{e['id']} image")
+                    st.image(e["image_url"], width=300, caption=f"Event #{e['id']} image")
 
 
 
-                # Action button
+                # Show on map button
 
                 if st.button(f"Show on map (Event #{e['id']})", key=f"show_map_{e['id']}"):
 
