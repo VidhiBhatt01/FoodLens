@@ -1,80 +1,78 @@
-## 🎓 Academic Alignment and Motivation
+# 🎓 Academic Alignment and Motivation
 
-FoodLens is designed not only as a practical sustainability tool for the UCLA community but also as a direct engagement with core themes presented in **CS 269**. The project integrates AI transparency, ethical reasoning, and responsible deployment throughout its workflow.
+FoodLens serves both as a practical sustainability tool for the UCLA community and as a direct engagement with core themes from **CS 269**. The system integrates interpretability, ethical reasoning, and responsible deployment practices throughout its design.
 
----
 
-### 🔍 1. Mechanistic Interpretability
 
-FoodLens intentionally avoids opaque neural models.  
-Instead, it uses a **custom interpretable decision-tree predictor** whose full structure is:
+## 🔍 1. Mechanistic Interpretability
 
-• exported as JSON  
-• human-readable  
-• paired with explanation traces  
-• reproducible and auditable  
+FoodLens intentionally avoids opaque, high-capacity neural models.  
+Instead, it uses a **fully interpretable decision-tree–based predictor**, whose structure is:
 
-Every recommendation explicitly shows *which features contributed to the outcome*, reflecting the core goals of mechanistic interpretability.
+- exported as JSON,
+- human-readable and inspectable,
+- paired with explanation traces,
+- reproducible and auditable.
 
----
+Each recommendation includes a transparent breakdown of the factors influencing the prediction, directly reflecting the objectives of mechanistic interpretability.
 
-### ⚖️ 2. Computational Ethics and Fairness
 
-The platform incorporates ethical reasoning at the design level:
 
-• opt-in notification preferences  
-• dietary filters for inclusivity  
-• non-intrusive email-based alerts  
-• choice **not** to use real-time tracking  
-• accessible UI design for equitable access  
+## ⚖️ 2. Computational Ethics and Fairness
 
-These decisions ensure that visibility of food opportunities does not disadvantage any student group and aligns with computational ethics discussions from CS 269.
+Ethical considerations guide the platform’s functionality and constraints:
 
----
+- opt-in, user-controlled notification preferences,
+- dietary filters to support inclusivity,
+- minimal data collection and no real-time tracking,
+- accessible UI design for equitable use across the student body.
 
-### 🛡️ 3. AI Safety and Responsible Deployment
+These choices ensure the system does not systematically advantage or disadvantage any group and align with fairness and ethics discussions emphasized in CS 269.
 
-FoodLens avoids high-risk automation, including:
 
-• no continuous monitoring of user location  
-• no behavior-shaping or ranking algorithms  
-• no hidden prioritization rules  
 
-The predictor is **advisory**, not prescriptive.  
-Every prediction includes a clear rationale, making the system predictable, transparent, and safe — consistent with AI safety principles emphasized in the course.
+## 🛡️ 3. AI Safety and Responsible Deployment
 
----
+FoodLens deliberately avoids high-risk automation or behavior-shaping mechanisms.  
+In particular, the system does **not** use:
 
-### 🌱 4. Social Impact and Sustainability
+- continuous user monitoring,
+- hidden ranking or prioritization algorithms,
+- opaque or non-explainable decision pipelines.
 
-By reducing food surplus and enabling redistribution, FoodLens aligns with:
+The predictor is strictly advisory.  
+All outputs are accompanied by concise explanations, making the system’s behavior predictable, transparent, and safe consistent with core AI safety principles.
 
-• campus sustainability initiatives  
-• ethical consumption practices  
-• resource-efficient event planning  
-• community welfare and food accessibility  
 
-This demonstrates how interpretable AI can support positive social outcomes at a campus scale.
 
----
+## 🌱 4. Social Impact and Sustainability
 
-### 📘 5. Scope Appropriate for Capstone Evaluation
+The project contributes to broader campus and societal goals:
 
-FoodLens balances academic rigor with practical implementation, combining:
+- reducing food surplus at UCLA events,
+- promoting ethical consumption,
+- supporting resource-efficient event planning,
+- improving community access to leftover food.
 
-• system design  
-• ethical reasoning  
-• interpretable ML  
-• UI/UX design  
-• synthetic data creation  
-• mapping and geospatial integration  
+This demonstrates how interpretable AI can serve as an effective tool for positive social impact.
 
-The project remains **fully achievable within a 10-week quarter**, while still providing meaningful depth for evaluation.
 
----
 
-### 🎯 Conclusion
+## 📘 5. Scope and Capstone Appropriateness
 
-FoodLens shows how **interpretable and ethically grounded AI** can address a tangible real-world challenge.  
+FoodLens balances academic depth with practical feasibility. The work includes:
 
----
+- end-to-end system design,
+- interpretable machine-learning methods,
+- explainability artifacts,
+- ethical reasoning and constraint justification,
+- geospatial visualization and UI/UX design,
+- synthetic data generation and model evaluation.
+
+The project remains well-scoped for a 10-week academic quarter while offering meaningful opportunities for technical and ethical analysis.
+
+
+
+## 🎯 Conclusion
+
+FoodLens illustrates how interpretable and ethically grounded AI systems can address real problems at campus scale. The project operationalizes key themes from CS 269 through a responsible, transparent, and community-oriented design.
