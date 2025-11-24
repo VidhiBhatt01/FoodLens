@@ -28,13 +28,13 @@ st.markdown(
 
 st.title("FoodLens: UCLA Food Sharing & Planning")
 
-# ----------------- BUILDING COORDS (Haines approx. corrected) -----------------
+# ----------------- APPROX BUILDING COORDS -----------------
 BUILDING_COORDS = {
     "Boelter Hall": (34.0689, -118.4441),
     "Math Sciences": (34.0686, -118.4429),
     "Engineering VI": (34.0683, -118.4455),
     "Royce Hall": (34.0722, -118.4421),
-    "Haines Hall": (34.0715, -118.4422),  # Approx near Royce / Kaplan
+    "Haines Hall": (34.0715, -118.4422), 
     "Kaplan Hall": (34.0718, -118.4419),
     "Anderson": (34.0736, -118.4422),
     "UCLA Law": (34.0731, -118.4410),
@@ -379,8 +379,8 @@ with tab_predict:
         else:
             st.info("Fill the form and click 'Get Recommendation'.")
 
-    # Always-show testimonials (Streamlit-native look, one with 4⭐)
-    st.markdown("### ⭐ User testimonials")
+    # Testimonials
+    st.markdown("### 🌸 User testimonials")
 
     t_col1, t_col2 = st.columns(2)
 
