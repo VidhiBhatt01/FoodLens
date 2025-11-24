@@ -2,6 +2,7 @@ import sys, os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import streamlit as st
+import streamlit.components.v1 as components
 import pandas as pd
 import folium
 from streamlit_folium import st_folium
@@ -199,6 +200,66 @@ with tab_browse:
 
     st.markdown("### Active Events")
 
+    st.markdown("""
+
+<style>
+
+.event-card {
+
+    background-color: #1e1e1e;
+
+    padding: 16px;
+
+    border-radius: 10px;
+
+    border: 1px solid #333;
+
+    margin-bottom: 15px;
+
+    color: #f2f2f2;
+
+}
+
+.badge-row {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 10px;
+
+}
+
+.badge {
+
+    padding: 4px 10px;
+
+    border-radius: 8px;
+
+    font-size: 0.8rem;
+
+    color: white;
+
+    display: inline-block;
+
+}
+
+.badge-zone { background-color: #4285F4; }
+
+.badge-diet { background-color: #00C853; }
+
+.event-label {
+
+    font-weight: 600;
+
+    color: #bbdefb;
+
+}
+
+</style>
+
+""", unsafe_allow_html=True)
+
 
 
     # Inject CSS for the event card ------------
@@ -341,37 +402,43 @@ with tab_browse:
 
                 # Render card
 
-                st.markdown(f"""
+                card_html = f"""
 
-                <div class='event-card'>
+<div class='event-card'>
 
-                    <div class='badge-row'>
-
-                        <div class='badge badge-zone'>{e['zone'].capitalize()}</div>
-
-                        <div class='badge badge-diet'>{e['diet']}</div>
-
-                    </div>
+    <div class='event-title'>#{e['id']} – {e['building']}</div>
 
 
 
-                    <p><span class='event-label'>Food:</span> {e['food_desc']}</p>
+    <div class='badge-row'>
 
-                    <p><span class='event-label'>Type:</span> {e['event_type']}</p>
+        <div class='badge badge-zone'>{e['zone'].capitalize()}</div>
 
-                    <p><span class='event-label'>Collect:</span> {e['collect_mode']} {e['collect_until_time'] or ""}</p>
+        <div class='badge badge-diet'>{e['diet']}</div>
 
-                </div>
-
-                """, unsafe_allow_html=True)
+    </div>
 
 
 
-                # Show image if available
+    <p><span class='event-label'>Food:</span> {e['food_desc']}</p>
+
+    <p><span class='event-label'>Type:</span> {e['event_type']}</p>
+
+    <p><span class='event-label'>Collect:</span> {e['collect_mode']} {e['collect_until_time'] or ""}</p>
+
+</div>
+
+"""
+
+
+
+                components.html(card_html, height=250, scrolling=False)
+
+
 
                 if e.get("image_url"):
 
-                    st.image(e["image_url"], width=300, caption=f"Event #{e['id']} image")
+                    st.image(e["image_url"], width=250, caption=f"Event #{e['id']} image")
 
 
 
