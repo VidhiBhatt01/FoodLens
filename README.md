@@ -110,7 +110,7 @@ Run `python tests/smoke_tests.py` to ensure required files exist, datasets are p
 
 ## Screenshots 📸
 
-Coming soon.
+<img src="https://github.com/VidhiBhatt01/FoodLens/blob/main/public/foodlens.gif.gif">
 
 <!--  
 Add screenshots using:
@@ -132,3 +132,4 @@ Add screenshots using:
 <p align="center" style="color:gray; font-size:0.9rem;">
   Made with ❤️ by <b>Vidhi</b> (MS CS @ UCLA – Fall 2025)
 </p>
+
