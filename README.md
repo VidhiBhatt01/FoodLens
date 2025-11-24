@@ -17,7 +17,8 @@
   <img src="https://img.shields.io/badge/Status-Active-success">
 </p>
 
-FoodLens is a campus-wide platform to reduce food waste by connecting surplus event food with students in real time. Designed with transparency, safety, and ethical AI principles inspired by UCLA CS 269.
+FoodLens is a campus-wide platform to reduce food waste by connecting surplus event food with students in real time.  
+Designed with transparency, safety, and ethical AI principles inspired by UCLA CS 269.
 
 ---
 
@@ -26,34 +27,84 @@ FoodLens is a campus-wide platform to reduce food waste by connecting surplus ev
 FoodLens enables event organizers to quickly post surplus food availability on campus, helping students find free food while reducing waste.  
 Students can browse active events, customize notification preferences, and view event locations on an interactive UCLA map.
 
-An interpretable machine-learning predictor estimates expected attendance to help organizers avoid over-ordering, maintaining transparency and fairness throughout the system.
+An interpretable machine-learning predictor estimates expected attendance to help organizers avoid over-ordering, maintaining transparency and fairness throughout the system. All content persists in Supabase (events, subscribers, feedback, and media assets) so the experience feels real, not just a Streamlit demo.
 
 ---
 
 ## Features ✨
 
-• Add a free-food event with details and optional image upload  
-• Browse active events through clean, collapsible dropdowns  
-• View event locations on an interactive map + Google Maps redirection  
-• Customizable email notifications for subscribed users  
-• Field-level validated email input for stronger data hygiene  
-• Image support for event posts and simulated email notifications  
-• Transparent attendance predictor using an interpretable decision tree  
-• Always-visible testimonials for trust and usability credibility  
-• Feedback submission page for student/community engagement  
-• Footer branding for project identity  
+• Add/close events with Supabase persistence + storage-backed image uploads  
+• Browse active events through collapsible cards synced to a Leaflet map  
+• Google Maps deep links + focus buttons to instantly re-center the map  
+• Optional login simulation with validated email + preference-based subscriptions  
+• Transparent attendance predictor powered by a scikit-learn decision tree  
+• Real-time explanations, testimonials, and trust cues to drive adoption  
+• Feedback submission routed to Supabase for rapid iteration  
+• Lightweight smoke tests to catch missing datasets or exports before deploy  
 
 ---
 
 ## Tech Stack 🛠️
 
 • Python  
-• Streamlit (UI)  
+• Streamlit (UI) + streamlit-folium  
 • Folium + Leaflet.js (Interactive mapping)  
-• scikit-learn (Model)  
-• Pandas (Data)  
-• Custom rule-based + interpretable decision tree model  
+• Supabase (Postgres, auth, and storage) via `supabase-py`  
+• python-dotenv for local secrets management  
+• scikit-learn DecisionTreeRegressor + Pandas preprocessing  
 • Synthetic dataset generation pipeline  
+
+---
+
+## Getting Started ⚙️
+
+1. Follow the full guide in `docs/SETUP.md` (Python env, Supabase keys, schema).
+2. Run the data/model scripts once to refresh artifacts:
+   ```
+   python model/generate_dataset.py      # optional, synthetic data refresh
+   python model/train_model.py          # trains tree + exports configs
+   python model/explainability.py       # refreshes explanations.json
+   ```
+3. Launch the Streamlit UI:
+   ```
+   streamlit run frontend/app.py
+   ```
+4. (Optional) Verify everything with `python tests/smoke_tests.py`.
+
+---
+
+## Architecture 🧩
+
+```
+frontend/app.py        # Streamlit app with tabs for add/browse/predict/feedback
+backend/supabase_*     # Reusable Supabase client + table helpers
+model/                 # Data generation, training, predictor + artifacts
+public/                # UCLA map assets for Folium overlay
+docs/                  # Setup + structure docs (including this README reference)
+tests/smoke_tests.py   # Quick CLI guardrails
+```
+
+Key flows:
+- UI imports backend helpers instead of talking to Supabase directly, keeping secrets centralized.
+- Model recommendations read `model/past_events.csv` at runtime for reproducibility.
+- Event images default to Supabase Storage (`event-images` bucket) with a local `event_images/` fallback for debugging.
+
+---
+
+## Supabase Schema 🗄️
+
+- `events`: stores organizer submissions, including `image_url`, `is_active`, and optional `close_reason`.
+- `subscribers`: tracks simulated logins + preferred zones/diets for future notification triggers.
+- `feedback`: captures contact form data from the Contact tab.
+- Storage bucket `event-images`: public bucket for Streamlit uploads (inserting via service key).
+
+Add Row-Level Security policies as needed; the local dev flow assumes a service-role key in `.env`.
+
+---
+
+## Testing ✅
+
+Run `python tests/smoke_tests.py` to ensure required files exist, datasets are populated, exported trees are non-empty, and storage folders resolve before deploying to Streamlit Cloud or Hugging Face Spaces.
 
 ---
 
@@ -70,40 +121,14 @@ Add screenshots using:
 
 ## Future Scope 🚀
 
-FoodLens is designed to be lightweight today but highly extensible. Possible future enhancements include:
-
-### Mobile App Integration 📱
-A dedicated iOS/Android app allowing:
-• Push notifications for nearby free food  
-• Real-time GPS proximity matching  
-• Quick event posting with camera integration  
-
-### UCLA Campus App Integration 🎓
-Embedding FoodLens directly into the official UCLA mobile app to:
-• Serve incoming notifications based on building geofences  
-• Display food events alongside MyUCLA schedules  
-• Provide analytics to student groups for budgeting food orders  
-
-### Smart Food Prediction 2.0 🤖
-Enhance the ML pipeline with:
-• Time-series modeling on event participation  
-• Real historical UCLA event data (with permission)  
-• Model explanations using SHAP or rule extraction  
-
-### Community Impact Dashboard 📊
-Analytics for UCLA sustainability offices:
-• Estimated pounds of food saved  
-• Waste reduction over time  
-• Building-level insights for planners  
-
-### NFC / QR Code Check-ins 🎫
-Optional attendee check-ins to measure accuracy between predicted vs. actual attendance.
+- **Mobile companion app** for push alerts, GPS proximity, and one-tap event posting.
+- **UCLA ecosystem integration** so events surface inside official campus apps and portals.
+- **Predictor 2.0** with time-series data, richer explanations, and live calibration.
+- **Impact dashboard** that quantifies pounds of food saved and highlights hotspots over time.
+- **Smart check-ins** (QR/NFC) to compare predicted vs. actual attendance for continuous tuning.
 
 ---
 
 <p align="center" style="color:gray; font-size:0.9rem;">
   Made with ❤️ by <b>Vidhi</b> (MS CS @ UCLA – Fall 2025)
 </p>
-
-
-
