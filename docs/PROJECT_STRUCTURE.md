@@ -1,6 +1,6 @@
 # FoodLens Project Structure
 
-## Project Tree (current)
+## Project Tree 
 
 ```
 FoodLens/
