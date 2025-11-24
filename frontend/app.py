@@ -407,7 +407,7 @@ with tab_feedback:
     st.subheader("Contact / Feedback")
 
     name = st.text_input("Name")
-    email = st.text_input("Email")
+    email = st.text_input("Email Id / How can we reach out to you?")
     msg = st.text_area("Message")
 
     if st.button("Submit feedback"):
