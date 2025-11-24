@@ -196,73 +196,13 @@ with tab_browse:
 
     st_data = st_folium(m, width=700, height=450)
 
-    # ---------------- ACTIVE EVENTS SECTION ----------------
+    # Displaying active events in collapsible expanders
 
     st.markdown("### Active Events")
 
-    st.markdown("""
-
-<style>
-
-.event-card {
-
-    background-color: #1e1e1e;
-
-    padding: 16px;
-
-    border-radius: 10px;
-
-    border: 1px solid #333;
-
-    margin-bottom: 15px;
-
-    color: #f2f2f2;
-
-}
-
-.badge-row {
-
-    display: flex;
-
-    gap: 10px;
-
-    margin-bottom: 10px;
-
-}
-
-.badge {
-
-    padding: 4px 10px;
-
-    border-radius: 8px;
-
-    font-size: 0.8rem;
-
-    color: white;
-
-    display: inline-block;
-
-}
-
-.badge-zone { background-color: #4285F4; }
-
-.badge-diet { background-color: #00C853; }
-
-.event-label {
-
-    font-weight: 600;
-
-    color: #bbdefb;
-
-}
-
-</style>
-
-""", unsafe_allow_html=True)
 
 
-
-    # Inject CSS for the event card ------------
+    # CSS for nice cards and badges
 
     st.markdown("""
 
@@ -270,57 +210,83 @@ with tab_browse:
 
     .event-card {
 
-        background-color:#1e1e1e;
+        background-color: #1e1e1e;
 
-        padding:18px;
+        padding: 18px;
 
-        border-radius:10px;
+        border-radius: 10px;
 
-        border:1px solid #333;
+        border: 1px solid #333;
 
-        margin-bottom:12px;
+        margin-bottom: 12px;
 
-        color:white;
+        color: #f2f2f2;
 
-        font-family: Inter, sans-serif;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
     }
 
     .event-title {
 
-        font-size:1.1rem;
+        font-size: 1.1rem;
 
-        font-weight:600;
+        font-weight: 600;
 
-        margin-bottom:8px;
-
-    }
-
-    .event-row { margin:4px 0; }
-
-    .event-label { font-weight:600; color:#bbdefb; }
-
-    .tag {
-
-        display:inline-block;
-
-        padding:3px 7px;
-
-        border-radius:5px;
-
-        margin-right:6px;
-
-        margin-bottom:4px;
-
-        font-size:0.75rem;
-
-        color:white;
+        margin-bottom: 8px;
 
     }
 
-    .tag-zone { background:#4285F4; }
+    .badge-row {
 
-    .tag-diet { background:#00C853; }
+        display: flex;
+
+        gap: 8px;
+
+        margin-bottom: 10px;
+
+        margin-top: 4px;
+
+    }
+
+    .badge {
+
+        padding: 4px 10px;
+
+        border-radius: 999px;
+
+        font-size: 0.75rem;
+
+        color: #ffffff;
+
+        display: inline-block;
+
+    }
+
+    .badge-zone {
+
+        background-color: #4285F4;
+
+    }
+
+    .badge-diet {
+
+        background-color: #00C853;
+
+    }
+
+    .event-label {
+
+        font-weight: 600;
+
+        color: #bbdefb;
+
+    }
+
+    .event-row {
+
+        margin: 4px 0;
+
+    }
 
     </style>
 
@@ -336,101 +302,67 @@ with tab_browse:
 
         for e in active_events:
 
-            with st.expander(f"#{e['id']} — {e['building']}"):
+            # Each event is shown inside a collapsible expander
+
+            with st.expander(f"#{e['id']} — {e['building']}", expanded=False):
+
+                card_html = f"""
+
+                <div class="event-card">
+
+                  <div class="event-title">#{e['id']} – {e['building']}</div>
 
 
 
-                st.markdown(f"""
+                  <div class="badge-row">
 
-                <style>
+                    <div class="badge badge-zone">{e['zone'].capitalize()}</div>
 
-                    .event-card {{
+                    <div class="badge badge-diet">{e['diet']}</div>
 
-                        background-color: #1e1e1e;
-
-                        padding: 18px;
-
-                        border-radius: 12px;
-
-                        border: 1px solid #333;
-
-                        color: white;
-
-                    }}
-
-                    .badge-row {{
-
-                        display: flex;
-
-                        gap: 8px;
-
-                        margin-bottom: 10px;
-
-                    }}
-
-                    .badge {{
-
-                        padding: 6px 10px;
-
-                        border-radius: 6px;
-
-                        font-size: 0.75rem;
-
-                        color: white;
-
-                    }}
-
-                    .badge-zone {{ background-color: #4285F4; }}
-
-                    .badge-diet {{ background-color: #00C853; }}
-
-                </style>
+                  </div>
 
 
 
-                <div class='event-card'>
+                  <div class="event-row">
 
+                    <span class="event-label">Food:</span> {e['food_desc']}
 
+                  </div>
 
-                    <h3>#{e['id']} — {e['building']}</h3>
+                  <div class="event-row">
 
+                    <span class="event-label">Type:</span> {e['event_type']}
 
+                  </div>
 
-                    <div class='badge-row'>
+                  <div class="event-row">
 
-                        <div class='badge badge-zone'>{e['zone'].capitalize()}</div>
+                    <span class="event-label">Collect:</span> {e['collect_mode']} {e['collect_until_time'] or ""}
 
-                        <div class='badge badge-diet'>{e['diet']}</div>
-
-                    </div>
-
-
-
-                    <p><b>Food:</b> {e['food_desc']}</p>
-
-                    <p><b>Type:</b> {e['event_type']}</p>
-
-                    <p><b>Collect:</b> {e['collect_mode']} {e['collect_until_time'] or ''}</p>
-
-
+                  </div>
 
                 </div>
 
-                """, unsafe_allow_html=True)
+                """
+
+                # Render the styled card
+
+                st.markdown(card_html, unsafe_allow_html=True)
 
 
 
-                # Show image preview (FIXED: use image_url)
+                # Show image if available (from Supabase public URL)
 
                 if e.get("image_url"):
 
-                    st.image(e["image_url"], width=300, caption=f"Event #{e['id']} image")
+                    st.image(e["image_url"], width=260, caption=f"Event #{e['id']} image")
 
 
 
-                # Show on map button
+                # Button to focus on this event in the map above
 
-                if st.button(f"Show on map (Event #{e['id']})", key=f"show_map_{e['id']}"):
+                if st.button(f"Show on map (Event #{e['id']})", key=f"map_btn_{e['id']}"):
 
                     st.session_state["focus_event"] = e
 
