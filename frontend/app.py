@@ -17,21 +17,24 @@ from backend.subscribers import add_subscriber
 st.set_page_config(page_title="FoodLens", layout="wide")
 
 # ----------------- BRANDING HEADER -----------------
-st.markdown("""
+st.markdown(
+    """
 <h1 style='text-align:center; margin-bottom:0;'>🍕🔍 FoodLens</h1>
 <p style='text-align:center; font-size:1.2rem; color:#666;'>Saving Food. Feeding Bruins.</p>
 <br>
-""", unsafe_allow_html=True)
+""",
+    unsafe_allow_html=True,
+)
 
 st.title("FoodLens: UCLA Food Sharing & Planning")
 
-# ----------------- BUILDING COORDS (corrected Haines Hall) -----------------
+# ----------------- BUILDING COORDS (Haines approx. corrected) -----------------
 BUILDING_COORDS = {
     "Boelter Hall": (34.0689, -118.4441),
     "Math Sciences": (34.0686, -118.4429),
     "Engineering VI": (34.0683, -118.4455),
     "Royce Hall": (34.0722, -118.4421),
-    "Haines Hall": (34.0715, -118.4422),   # ✔ corrected (south of Royce)
+    "Haines Hall": (34.0715, -118.4422),  # Approx near Royce / Kaplan
     "Kaplan Hall": (34.0718, -118.4419),
     "Anderson": (34.0736, -118.4422),
     "UCLA Law": (34.0731, -118.4410),
@@ -59,25 +62,37 @@ with tab_add:
         diet = st.selectbox("Diet", ["vegan", "vegetarian", "non-vegetarian", "mixed"])
         food_desc = st.text_input("Food description (e.g., pizza, sandwiches)")
         collect_mode = st.selectbox("Collect mode", ["Until supplies last", "Until specific time"])
-        collect_until_time = st.time_input("Until what time?", disabled=(collect_mode == "Until supplies last"))
-        uploaded_image = st.file_uploader("Upload event image (optional)", type=["png", "jpg", "jpeg"])
+        collect_until_time = st.time_input(
+            "Until what time?", disabled=(collect_mode == "Until supplies last")
+        )
+        uploaded_image = st.file_uploader(
+            "Upload event image (optional)", type=["png", "jpg", "jpeg"]
+        )
         submitted = st.form_submit_button("Add Event")
 
     if submitted:
         img_path = None
         if uploaded_image:
             import uuid
+
             sb = get_client()
             ext = uploaded_image.name.split(".")[-1]
             file_name = f"{uuid.uuid4()}.{ext}"
 
+            # Upload to Supabase storage
             sb.storage.from_("event-images").upload(
-                file_name, uploaded_image.getvalue(),
-                file_options={"content-type": uploaded_image.type}
+                file_name,
+                uploaded_image.getvalue(),
+                file_options={"content-type": uploaded_image.type},
             )
 
+            # Public URL
             base = sb.storage.from_("event-images").get_public_url(file_name)
-            img_path = base if base.startswith("http") else f"{sb.supabase_url}/storage/v1/object/public/event-images/{file_name}"
+            img_path = (
+                base
+                if base.startswith("http")
+                else f"{sb.supabase_url}/storage/v1/object/public/event-images/{file_name}"
+            )
 
         new_event = {
             "building": building,
@@ -87,7 +102,9 @@ with tab_add:
             "food_desc": food_desc,
             "collect_mode": collect_mode,
             "collect_until_time": (
-                collect_until_time.strftime("%H:%M") if collect_mode == "Until specific time" else ""
+                collect_until_time.strftime("%H:%M")
+                if collect_mode == "Until specific time"
+                else ""
             ),
             "image_url": img_path,
             "is_active": True,
@@ -98,19 +115,22 @@ with tab_add:
 
     # -------- CLOSE EVENT --------
     st.subheader("Close an Event")
+
     all_events = fetch_events()
     active_events_close = [e for e in all_events if e.get("is_active")]
 
     if active_events_close:
+        # Sequential numbering based on active events only
         numbered = [(i + 1, e) for i, e in enumerate(active_events_close)]
         label_options = [f"{num}. {e['building']}" for num, e in numbered]
         selected_label = st.selectbox("Select event to close", label_options)
-        close_reason = st.text_input("Reason for closing")
+        close_reason = st.text_input("Reason for closing (e.g., food over, moved)")
 
         if st.button("Close selected event"):
             idx = int(selected_label.split(".")[0]) - 1
-            deactivate_event(active_events_close[idx]["id"], close_reason)
-            st.success(f"Closed event {selected_label}")
+            event_id = active_events_close[idx]["id"]
+            deactivate_event(event_id, close_reason)
+            st.success(f"Closed event: {selected_label}")
     else:
         st.info("No active events to close.")
 
@@ -122,62 +142,79 @@ with tab_browse:
 
     # Login simulation
     col1, col2, col3 = st.columns(3)
-    with col1: username = st.text_input("Username")
-    with col2: password = st.text_input("Password", type="password")
-    with col3: logged_in = st.checkbox("Simulate login")
+    with col1:
+        username = st.text_input("Username")
+    with col2:
+        password = st.text_input("Password", type="password")
+    with col3:
+        logged_in = st.checkbox("Simulate login")
 
     notif_prefs = {}
 
     if logged_in:
-        st.success(f"Logged in as {username}")
-        pref_zone = st.multiselect("Preferred zones", ["north","south","east","west"],
-                                   default=["north","south","east","west"])
-        pref_diet = st.multiselect("Preferred diets",
-                                   ["vegan","vegetarian","non-vegetarian","mixed"],
-                                   default=["vegan","vegetarian","non-vegetarian","mixed"])
+        st.success(f"Logged in as {username} (simulated)")
+
+        pref_zone = st.multiselect(
+            "Preferred zones",
+            ["north", "south", "east", "west"],
+            default=["north", "south", "east", "west"],
+        )
+        pref_diet = st.multiselect(
+            "Preferred diets",
+            ["vegan", "vegetarian", "non-vegetarian", "mixed"],
+            default=["vegan", "vegetarian", "non-vegetarian", "mixed"],
+        )
         email = st.text_input("Email for notifications")
 
         import re
-        email_valid = re.match(r"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$", email or "")
+
+        email_valid = re.match(
+            r"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$", email or ""
+        )
 
         if email and email_valid:
             st.success("Valid email ✔")
         elif email:
-            st.error("Invalid email")
+            st.error("Invalid email (e.g., name@example.com)")
 
         if st.button("Subscribe"):
             if not email_valid:
-                st.error("Enter valid email")
+                st.error("Please enter a valid email.")
             else:
                 add_subscriber(username, email, pref_zone, pref_diet)
-                st.success(f"Subscribed {email}")
+                st.success(f"Subscribed! Notifications will go to {email}.")
 
         notif_prefs = {"zones": pref_zone, "diets": pref_diet}
-
     else:
-        st.info("Browse without logging in.")
+        st.info("You can browse events without logging in.")
 
     # Filters
     st.markdown("**Browse filters:**")
-    f_zone = st.multiselect("Filter by zone",
-                            ["north","south","east","west"],
-                            default=["north","south","east","west"])
-    f_diet = st.multiselect("Filter by diet",
-                            ["vegan","vegetarian","non-vegetarian","mixed"],
-                            default=["vegan","vegetarian","non-vegetarian","mixed"])
+    f_zone = st.multiselect(
+        "Filter by zone",
+        ["north", "south", "east", "west"],
+        default=["north", "south", "east", "west"],
+    )
+    f_diet = st.multiselect(
+        "Filter by diet",
+        ["vegan", "vegetarian", "non-vegetarian", "mixed"],
+        default=["vegan", "vegetarian", "non-vegetarian", "mixed"],
+    )
 
     events = fetch_events()
     active_events = [
-        e for e in events
+        e
+        for e in events
         if e.get("is_active") and e.get("zone") in f_zone and e.get("diet") in f_diet
     ]
 
-    # Sequential numbering for UI
+    # Sequential numbering for UI (based only on active + filtered events)
     for i, e in enumerate(active_events):
         e["display_id"] = i + 1
 
     # Map rendering
     focus = st.session_state.get("focus_event")
+
     if focus:
         lat, lon = BUILDING_COORDS.get(focus["building"], (34.0689, -118.4452))
         m = folium.Map(location=[lat, lon], zoom_start=18)
@@ -204,26 +241,47 @@ with tab_browse:
 
     # Event cards
     st.markdown("### Active Events")
-    st.markdown("""
+    st.markdown(
+        """
 <style>
 .event-card {
-    background:#1e1e1e; padding:18px; border-radius:10px;
-    border:1px solid #333; margin-bottom:12px; color:#f2f2f2;
+    background:#1e1e1e;
+    padding:18px;
+    border-radius:10px;
+    border:1px solid #333;
+    margin-bottom:12px;
+    color:#f2f2f2;
 }
-.badge-row { display:flex; gap:8px; margin-top:6px; margin-bottom:12px; }
-.badge { padding:5px 12px; border-radius:20px; font-size:0.75rem; color:white; }
+.badge-row {
+    display:flex;
+    gap:8px;
+    margin-top:6px;
+    margin-bottom:12px;
+}
+.badge {
+    padding:5px 12px;
+    border-radius:20px;
+    font-size:0.75rem;
+    color:white;
+}
 .badge-zone { background:#4285F4; }
 .badge-diet { background:#00C853; }
-.event-label { font-weight:600; color:#bbdefb; }
+.event-label {
+    font-weight:600;
+    color:#bbdefb;
+}
 </style>
-""", unsafe_allow_html=True)
+""",
+        unsafe_allow_html=True,
+    )
 
     if not active_events:
         st.write("No events match your filters.")
     else:
         for e in active_events:
             with st.expander(f"{e['display_id']} — {e['building']}"):
-                st.markdown(f"""
+                st.markdown(
+                    f"""
 <div class="event-card">
     <div class="event-title">{e['display_id']} – {e['building']}</div>
     <div class="badge-row">
@@ -234,19 +292,28 @@ with tab_browse:
     <div class="event-row"><span class="event-label">Type:</span> {e['event_type']}</div>
     <div class="event-row"><span class="event-label">Collect:</span> {e['collect_mode']} {e['collect_until_time']}</div>
 </div>
-""", unsafe_allow_html=True)
+""",
+                    unsafe_allow_html=True,
+                )
 
                 if e.get("image_url"):
-                    st.image(e["image_url"], width=260, caption=f"Event {e['display_id']} image")
+                    st.image(
+                        e["image_url"],
+                        width=260,
+                        caption=f"Event {e['display_id']} image",
+                    )
 
-                # ⭐ GOOGLE MAPS BUTTON (INSIDE EXPANDER)
+                # Google Maps button inside expander
                 lat, lon = BUILDING_COORDS[e["building"]]
                 gmaps_url = f"https://www.google.com/maps/search/?api=1&query={lat},{lon}"
                 st.markdown(f"[📍 Open in Google Maps]({gmaps_url})")
 
-                if st.button(f"Center on map (Event {e['display_id']})", key=f"map_btn_{e['id']}"):
+                if st.button(
+                    f"Center on map (Event {e['display_id']})",
+                    key=f"map_btn_{e['id']}",
+                ):
                     st.session_state["focus_event"] = e
-                    st.success(f"Centered event {e['display_id']}")
+                    st.success(f"Centered event {e['display_id']} on map.")
 
 # ======================================================
 # TAB C: FOOD SURPLUS PREDICTOR — WITH TESTIMONIALS ALWAYS VISIBLE
@@ -257,18 +324,41 @@ with tab_predict:
     col1, col2 = st.columns(2)
 
     with col1:
-        building = st.selectbox("Building", list(BUILDING_COORDS.keys()), key="pred_building")
-        zone = st.selectbox("Zone", ["north","south","east","west"], key="pred_zone")
-        event_type = st.selectbox("Event type", ["club","seminar","fair","career_fair"], key="pred_event_type")
-        day = st.selectbox("Day", ["mon","tue","wed","thu","fri"], key="pred_day")
-        time = st.selectbox("Time", ["09:00","12:00","15:00","18:00","20:00"], key="pred_time")
-        rsvps = st.number_input("RSVP count", min_value=0, max_value=500, value=150, key="pred_rsvps")
-        planned_food = st.number_input("Food quantity", min_value=0, max_value=600, value=160, key="pred_food")
+        building = st.selectbox(
+            "Building", list(BUILDING_COORDS.keys()), key="pred_building"
+        )
+        zone = st.selectbox(
+            "Zone", ["north", "south", "east", "west"], key="pred_zone"
+        )
+        event_type = st.selectbox(
+            "Event type", ["club", "seminar", "fair", "career_fair"], key="pred_event_type"
+        )
+        day = st.selectbox(
+            "Day", ["mon", "tue", "wed", "thu", "fri"], key="pred_day"
+        )
+        time = st.selectbox(
+            "Time", ["09:00", "12:00", "15:00", "18:00", "20:00"], key="pred_time"
+        )
+        rsvps = st.number_input(
+            "RSVP count", min_value=0, max_value=500, value=150, key="pred_rsvps"
+        )
+        planned_food = st.number_input(
+            "Food quantity",
+            min_value=0,
+            max_value=600,
+            value=160,
+            key="pred_food",
+        )
 
         if st.button("Get Recommendation"):
             st.session_state["pred_result"] = recommend(
-                building=building, zone=zone, event_type=event_type,
-                day=day, time=time, rsvps=rsvps, planned_food=planned_food
+                building=building,
+                zone=zone,
+                event_type=event_type,
+                day=day,
+                time=time,
+                rsvps=rsvps,
+                planned_food=planned_food,
             )
 
     with col2:
@@ -279,7 +369,7 @@ with tab_predict:
             st.write(f"Recommended food: **{res['recommended_food']}**")
 
             if res["reduction"] > 0:
-                st.write(f"Reduce by **{res['reduction']}** portions")
+                st.write(f"Reduce by **{res['reduction']}** portions.")
             else:
                 st.write("No reduction recommended.")
 
@@ -289,38 +379,51 @@ with tab_predict:
         else:
             st.info("Fill the form and click 'Get Recommendation'.")
 
-    # Always-show testimonials
-    st.markdown("### ⭐ User Testimonials")
-    st.markdown("""
-<div style="background:#d4edda; padding:12px; border-radius:6px; margin-bottom:6px;">
-<b>⭐⭐⭐⭐⭐</b> — “The prediction helped us cut waste!” — UCLA ACM Officer
-</div>
-<div style="background:#d4edda; padding:12px; border-radius:6px; margin-bottom:6px;">
-<b>⭐⭐⭐⭐⭐</b> — “Super useful and trustworthy.” — Grad Student CS
-</div>
-<div style="background:#d4edda; padding:12px; border-radius:6px;">
-<b>⭐⭐⭐⭐⭐</b> — “We reduced over-ordering by 20%!” — Club Treasurer
-</div>
-""", unsafe_allow_html=True)
+    # Always-show testimonials (Streamlit-native look, one with 4⭐)
+    st.markdown("### ⭐ User testimonials")
+
+    t_col1, t_col2 = st.columns(2)
+
+    with t_col1:
+        st.markdown(
+            "**⭐⭐⭐⭐⭐  · UCLA ACM Officer**  \n"
+            "_“The prediction helped us cut waste across our big events.”_"
+        )
+        st.markdown(
+            "**⭐⭐⭐⭐  · Grad Student (CS)**  \n"
+            "_“Nice sanity-check before submitting catering orders.”_"
+        )
+
+    with t_col2:
+        st.markdown(
+            "**⭐⭐⭐⭐⭐  · Club Treasurer**  \n"
+            "_“We reduced over-ordering by ~20% across two quarters.”_"
+        )
 
 # ======================================================
 # TAB D: FEEDBACK
 # ======================================================
 with tab_feedback:
     st.subheader("Contact / Feedback")
+
     name = st.text_input("Name")
     email = st.text_input("Email")
     msg = st.text_area("Message")
 
     if st.button("Submit feedback"):
         sb = get_client()
-        sb.table("feedback").insert({"name": name, "email": email, "message": msg}).execute()
-        st.success("Thanks! Feedback recorded.")
+        sb.table("feedback").insert(
+            {"name": name, "email": email, "message": msg}
+        ).execute()
+        st.success("Thanks! Your feedback has been recorded.")
 
 # ----------------- FOOTER -----------------
-st.markdown("""
+st.markdown(
+    """
 <br><br>
 <div style='text-align:center; color:gray; padding:20px; font-size:0.9rem;'>
     Made with ❤️ by Vidhi (MS CS @ UCLA – Fall 2025)
 </div>
-""", unsafe_allow_html=True)
+""",
+    unsafe_allow_html=True,
+)
