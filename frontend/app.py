@@ -80,14 +80,21 @@ with tab_add:
             ext = uploaded_image.name.split(".")[-1]
             file_name = f"{uuid.uuid4()}.{ext}"
 
-            # Uploading to Supabase Storage
             sb = get_client()
+            # upload to Supabase
             sb.storage.from_("event-images").upload(
                 file_name,
                 uploaded_image.getvalue(),
                 file_options={"content-type": uploaded_image.type},
             )
-            img_path = sb.storage.from_("event-images").get_public_url(file_name)
+
+            # Build proper public URL manually (more reliable)
+            base = sb.storage.from_("event-images").get_public_url(file_name)
+            img_path = (
+                base
+                if base.startswith("http")
+                else f"{sb.supabase_url}/storage/v1/object/public/event-images/{file_name}"
+            )
 
         new_event = {
             "building": building,
