@@ -195,32 +195,137 @@ with tab_browse:
 
     st_data = st_folium(m, width=700, height=450)
 
-    # Displaying active events in collapsible expanders
+    # ---------------- ACTIVE EVENTS SECTION ----------------
+
     st.markdown("### Active Events")
+
+
+
+    # Inject CSS for the event card ------------
+
+    st.markdown("""
+
+    <style>
+
+    .event-card {
+
+        background-color:#1e1e1e;
+
+        padding:18px;
+
+        border-radius:10px;
+
+        border:1px solid #333;
+
+        margin-bottom:12px;
+
+        color:white;
+
+        font-family: Inter, sans-serif;
+
+    }
+
+    .event-title {
+
+        font-size:1.1rem;
+
+        font-weight:600;
+
+        margin-bottom:8px;
+
+    }
+
+    .event-row { margin:4px 0; }
+
+    .event-label { font-weight:600; color:#bbdefb; }
+
+    .tag {
+
+        display:inline-block;
+
+        padding:3px 7px;
+
+        border-radius:5px;
+
+        margin-right:6px;
+
+        margin-bottom:4px;
+
+        font-size:0.75rem;
+
+        color:white;
+
+    }
+
+    .tag-zone { background:#4285F4; }
+
+    .tag-diet { background:#00C853; }
+
+    </style>
+
+    """, unsafe_allow_html=True)
+
+
+
     if not active_events:
+
         st.write("No events match your filters right now.")
+
     else:
+
         for e in active_events:
-            html = f"""
-    <div class='event-card'>
-        <div class='event-title'>#{e['id']} – {e['building']}</div>
 
-        <span class='tag tag-zone'>{e['zone'].capitalize()}</span>
-        <span class='tag tag-diet'>{e['diet']}</span>
 
-        <div class='event-row'><span class='event-label'>Food:</span> {e['food_desc']}</div>
-        <div class='event-row'><span class='event-label'>Type:</span> {e['event_type']}</div>
-        <div class='event-row'><span class='event-label'>Collect:</span> {e['collect_mode']} {e['collect_until_time'] or ""}</div>
-    </div>
+
+            with st.expander(f"#{e['id']} — {e['building']}"):
+
+
+
+                # Render HTML card properly (NO indentation)
+
+                card_html = f"""
+
+<div class='event-card'>
+
+  <div class='event-title'>#{e['id']} – {e['building']}</div>
+
+
+
+  <span class='tag tag-zone'>{e['zone'].capitalize()}</span>
+
+  <span class='tag tag-diet'>{e['diet']}</span>
+
+
+
+  <div class='event-row'><span class='event-label'>Food:</span> {e['food_desc']}</div>
+
+  <div class='event-row'><span class='event-label'>Type:</span> {e['event_type']}</div>
+
+  <div class='event-row'><span class='event-label'>Collect:</span> {e['collect_mode']} {e['collect_until_time'] or ""}</div>
+
+</div>
+
 """
-            st.markdown(html, unsafe_allow_html=True)
 
-            if e.get("image_url"):
-                st.image(e["image_url"], width=250, caption=f"Event #{e['id']} image")
-            
-            if st.button(f"Show on map (Event #{e['id']})", key=f"show_map_{e['id']}"):
-                st.session_state["focus_event"] = e
-                st.success(f"Highlighting event #{e['id']} on map...")
+                st.markdown(card_html, unsafe_allow_html=True)
+
+
+
+                # Show image correctly
+
+                if e.get("image_url"):
+
+                    st.image(e["image_url"], width=260, caption=f"Event #{e['id']}")
+
+
+
+                # Map highlight button
+
+                if st.button(f"Show on map (Event #{e['id']})", key=f"map_btn_{e['id']}"):
+
+                    st.session_state["focus_event"] = e
+
+                    st.success(f"Highlighting #{e['id']} on map!")
 
     # Simulating email notifications for subscribed users
     if logged_in and active_events:
