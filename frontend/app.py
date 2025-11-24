@@ -380,7 +380,7 @@ with tab_predict:
             st.info("Fill the form and click 'Get Recommendation'.")
 
     # Testimonials
-    st.markdown("### <User testimonials> ")
+    st.markdown("### User Testimonials ")
 
     t_col1, t_col2 = st.columns(2)
 
