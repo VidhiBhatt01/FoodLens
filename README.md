@@ -80,7 +80,7 @@ frontend/app.py        # Streamlit app with tabs for add/browse/predict/feedback
 backend/supabase_*     # Reusable Supabase client + table helpers
 model/                 # Data generation, training, predictor + artifacts
 public/                # UCLA map assets for Folium overlay
-docs/                  # Setup + structure docs (including this README reference)
+docs/                  # Setup + structure docs 
 tests/smoke_tests.py   # Quick CLI guardrails
 ```
 
@@ -132,4 +132,5 @@ Add screenshots using:
 <p align="center" style="color:gray; font-size:0.9rem;">
   Made with ❤️ by <b>Vidhi</b> (MS CS @ UCLA – Fall 2025)
 </p>
+
 
