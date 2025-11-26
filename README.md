@@ -31,6 +31,18 @@ An interpretable machine-learning predictor estimates expected attendance to hel
 
 ---
 
+## Documentation 📄
+Full project documentation is available in the `docs/` directory:
+
+- **ARCHITECTURE.md** – System design and component interactions  
+- **PROJECT_STRUCTURE.md** – Repository layout and file-level overview  
+- **SETUP.md** – Environment setup, Supabase configuration, and run instructions  
+- **ACADEMIC_ALIGNMENT.md** – CS 269 alignment, interpretability grounding, and ethics framing  
+
+These documents provide a deeper look into the system beyond what is covered in this README.
+
+---
+
 ## Features ✨
 
 • Add/close events with Supabase persistence + storage-backed image uploads  
@@ -132,5 +144,6 @@ Add screenshots using:
 <p align="center" style="color:gray; font-size:0.9rem;">
   Made with ❤️ by <b>Vidhi</b> (MS CS @ UCLA – Fall 2025)
 </p>
+
 
 
