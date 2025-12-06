@@ -17,15 +17,13 @@
   <img src="https://img.shields.io/badge/Status-Active-success">
 </p>
 
-FoodLens is a campus-wide platform to reduce food waste by connecting surplus event food with students in real time.  
-Designed with transparency, safety, and ethical AI principles inspired by UCLA CS 269.
+FoodLens is a campus-wide platform to reduce food waste by connecting surplus event food with students in real time. Designed with transparency, safety, and ethical AI principles inspired by UCLA CS 269.
 
 ---
 
 ## Overview 🌿
 
-FoodLens enables event organizers to quickly post surplus food availability on campus, helping students find free food while reducing waste.  
-Students can browse active events, customize notification preferences, and view event locations on an interactive UCLA map.
+FoodLens enables event organizers to quickly post surplus food availability on campus, helping students find free food while reducing waste. Students can browse active events, customize notification preferences, and view event locations on an interactive UCLA map.
 
 An interpretable machine-learning predictor estimates expected attendance to help organizers avoid over-ordering, maintaining transparency and fairness throughout the system. All content persists in Supabase (events, subscribers, feedback, and media assets) so the experience feels real, not just a Streamlit demo.
 
@@ -144,6 +142,7 @@ Add screenshots using:
 <p align="center" style="color:gray; font-size:0.9rem;">
   Made with ❤️ by <b>Vidhi</b> (MS CS @ UCLA – Fall 2025)
 </p>
+
 
 
 
